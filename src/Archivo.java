@@ -42,6 +42,13 @@ public class Archivo {
 			e.printStackTrace();
 		}
 		return ret;
-		
+	}
+	
+	public String getName(){
+		return archivo.getName();
+	}
+
+	public String getPath() {		// 
+		return archivo.getAbsolutePath();
 	}
 }
