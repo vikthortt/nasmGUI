@@ -259,8 +259,8 @@ public class Ventana {
 	}
 	
 	private void cargar(Archivo archivo){
-		while(!archivo.existe())
-			addNewTextTab(archivo.getName(), archivo, EnrichedTextTab.NO_EDITABLE);
+		while(!archivo.existe()){}
+		addNewTextTab(archivo.getName(), archivo, EnrichedTextTab.NO_EDITABLE);
 	}
 	
 	private void cerrar(){
