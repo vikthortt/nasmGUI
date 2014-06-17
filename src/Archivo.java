@@ -51,4 +51,8 @@ public class Archivo {
 	public String getPath() {		// 
 		return archivo.getAbsolutePath();
 	}
+
+	public boolean existe() {
+		return archivo.exists();
+	}
 }

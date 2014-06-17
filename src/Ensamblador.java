@@ -1,3 +1,7 @@
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 
 public class Ensamblador {
 	
@@ -10,17 +14,26 @@ public class Ensamblador {
 
 	public boolean ensamblar(Archivo archivo, String modo){
 		//TODO
-		String args[] = new String[10];
+		String args[] = new String[5];
 		args[0] = "nasm";  					//Ensamblador
 		args[1] = archivo.getPath(); 		//Archivo
 		args[2] = "-felf"+modo;				//Modo
 		args[3] = "-l";						//Genera archivo instrucciones
 		args[4] = archivo.getPath().replace(".s", ".inst");
 		
-		inst = null;
-		mensaje = ":)";
+		try {
+		    Process process = Runtime.getRuntime().exec(args);
+		    InputStream inputstream = process.getInputStream();
+		    BufferedInputStream bufferedinputstream = new BufferedInputStream(inputstream);
+		    mensaje = bufferedinputstream.toString();
+		    inst = new Archivo(args[4]);
+		    return true;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 		
-		return false;
 	}
 
 	public Archivo getInstFile() {
